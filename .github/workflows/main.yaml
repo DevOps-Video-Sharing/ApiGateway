@@ -38,13 +38,15 @@ jobs:
     needs: testing
     uses: ./.github/workflows/build-image.yaml
     secrets:
-      DOCKER_HUB_ACCESS_TOKEN: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+      DOCKER_HUB_ACCESS_TOKEN: ${{ secrets.DOCKER_HUB_ACCESS_TOKE }}
 
   scan-image:
+    if: always()
     needs: build-image
     uses: ./.github/workflows/scan-image.yaml
 
   notify:
+    if: always()
     needs: scan-image
     uses: ./.github/workflows/notifyCI.yaml
     secrets:
