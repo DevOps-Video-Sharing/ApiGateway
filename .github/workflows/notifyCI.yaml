@@ -8,7 +8,7 @@ on:
 
 jobs:
   success_notifier:
-    if: ${{ success() }}
+    if: success()
     runs-on: ubuntu-latest
     steps:
       - name: Send success notification on Slack
@@ -22,7 +22,7 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
   failure_notifier:
-    if: ${{ failure() }}
+    if: failure()
     runs-on: ubuntu-latest
     steps:
       - name: Send failure notification on Slack
