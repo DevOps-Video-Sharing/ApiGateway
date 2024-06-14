@@ -39,3 +39,10 @@ spec:
       port: 8080
       targetPort: 8080
   type: LoadBalancer
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-gateway-config
+data:
+  API_GATEWAY_URL: "http://api-gateway:8080"
