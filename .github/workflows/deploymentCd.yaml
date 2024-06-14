@@ -56,6 +56,10 @@ jobs:
         run: |
           gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --zone ${{ env.ZONE }} --project ${{ env.PROJECT_ID }}
 
+      - name: Apply config map
+        run: |
+          kubectl apply -f config-map.yaml
+
       - name: Apply Kubernetes manifests
         run: |
           kubectl apply -f resources.yaml
