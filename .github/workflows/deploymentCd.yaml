@@ -6,14 +6,9 @@ on:
     types:
       - completed
 
-env:
-  PROJECT_ID: gke-project-423206
-  CLUSTER_NAME: autopilot-cluster-1
-  ZONE: us-central1
-
 jobs:
   deploy:
-    name: Deploy to GKE Autopilot
+    name: Deploy to K8S
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -57,7 +52,7 @@ jobs:
         
   notifications:
       needs: deploy
-      uses: ./.github/workflows/notifyCD.yaml
+      uses: ./.github/workflows/notifyCD.yml
       secrets:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       
