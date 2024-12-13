@@ -43,7 +43,6 @@ jobs:
     uses: ./.github/workflows/scan-image.yaml
 
   notify:
-    if: always()
     needs: scan-image
     uses: ./.github/workflows/notifyCI.yaml
     secrets:
